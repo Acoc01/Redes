@@ -1,0 +1,13 @@
+CREACION DE CLAVES CON GPG2
+
+gpg2 --gen-key
+
+REVISAR KEYS
+Publica: gpg2 -k 
+Privada: gpg2 -K 
+
+EXPORTAR CLAVES
+gpg2 --armor --output nombre.asc --export email@mail.m
+
+IMPORTAR CLAVES
+gpg2 --imoprt nombre.asc
