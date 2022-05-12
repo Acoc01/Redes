@@ -1,0 +1,3 @@
+/home/roako/Desktop/redes/servidor_cliente/build/CMakeFiles/server.dir
+/home/roako/Desktop/redes/servidor_cliente/build/CMakeFiles/edit_cache.dir
+/home/roako/Desktop/redes/servidor_cliente/build/CMakeFiles/rebuild_cache.dir

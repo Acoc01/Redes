@@ -2,13 +2,20 @@
 #define TCP_H
 
 #include <netinet/in.h>
+#include <sys/socket.h>
+
+// Estructura de archivo
+struct file_data_t {
+  char name[256];
+  size_t size;
+};
 
 // https://cl1lib.org/book/829755/45845b
 
 // Servidor
 struct tcp_server_t {
-    struct sockaddr_in server_addr;
-    int listen_sock;
+  struct sockaddr_in server_addr;
+  int listen_sock;
 };
 
 // Crea el servidor TCP
@@ -17,12 +24,13 @@ void tcp_server_create(struct tcp_server_t *server, int port);
 // Acepta una conexión TCP (crea un socket para comunicarse con el primer
 // cliente en la fila)
 int tcp_server_accept(struct tcp_server_t *server,
-                      struct sockaddr_in *client_addr);
+                      struct sockaddr_in *client_addr,
+                      socklen_t *client_addr_len);
 
 // Cliente
 struct tcp_client_t {
-    struct sockaddr_in server_addr;
-    int sock;
+  struct sockaddr_in server_addr;
+  int sock;
 };
 
 // Crea una conexión TCP con el servidor
@@ -38,4 +46,4 @@ void tcp_recv(int sock, void *data, size_t size);
 // Cierra la conexión
 void tcp_close(int sock);
 
-#endif  // TCP_H
+#endif // TCP_H

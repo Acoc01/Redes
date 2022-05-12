@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/roako/Desktop/redes/servidor_cliente/build",
+  "command": "/usr/bin/cc   -std=gnu11 -o CMakeFiles/server.dir/main.c.o -c /home/roako/Desktop/redes/servidor_cliente/main.c",
+  "file": "/home/roako/Desktop/redes/servidor_cliente/main.c"
+},
+{
+  "directory": "/home/roako/Desktop/redes/servidor_cliente/build",
+  "command": "/usr/bin/cc   -std=gnu11 -o CMakeFiles/server.dir/tcp.c.o -c /home/roako/Desktop/redes/servidor_cliente/tcp.c",
+  "file": "/home/roako/Desktop/redes/servidor_cliente/tcp.c"
+}
+]
