@@ -8,10 +8,25 @@
 
 void tcp_server_create(struct tcp_server_t *server, int port) {
     // Crear socket de escucha (se guarda en server->listen_sock)
+    server->server_addr.sin_family = AF_INET;
+    server->server_addr.sin_port = htons(port);
+    server->server_addr.s_addr = htonl(INADDR_ANY);
 
+    int listen_sock;
+    if( (listen_sock = socket(PF_INET, SOCK_STREAM, 0)) < 0 ){
+      printf("No se pudo crear el socket\n");
+    }
     // Bindear socket a puerto
+    if( (bind(listen_sock, (struct sockaddr *)&server->server_addr,
+            sizeof(server->server_addr))) < 0 ){
+      printf("No se pudo vincular el socket\n");
+    }
 
     // Escuchar conexiones entrantes
+    int wait_size = 5;
+    if( listen(listen_sock, wait_size) < 0 ){
+      printf("No se pudo abrir el socket para la escucha\n");
+    }
 }
 
 int tcp_server_accept(struct tcp_server_t *server,
