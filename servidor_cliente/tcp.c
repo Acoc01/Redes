@@ -79,6 +79,14 @@ void tcp_send(int sock, const void *data, size_t size) {
 }
 
 void tcp_recv(int sock, void *data, size_t size) {
+  FILE *fp;
+  char *filename = "recivido.txt";
+  char *buffer = (char *)data;
+
+  fp = fopen(filename, "a");
+  if (fp == NULL) {
+    printf("Error al crear archivo");
+  }
 
   while (size > 0) {
     int i = recv(sock, data, size, 0);
@@ -86,6 +94,8 @@ void tcp_recv(int sock, void *data, size_t size) {
       return;
     data += i;
     size -= i;
+    fprintf(fp, "%s", buffer);
+    bzero(buffer, size);
   }
 }
 

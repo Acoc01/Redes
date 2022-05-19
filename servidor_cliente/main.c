@@ -29,28 +29,12 @@ int main() {
   socklen_t client_addr_len = 0;
 
   while (true) {
-    tcp_server_accept(&server_address, &client_address, &client_addr_len);
+    int sock;
+    char buffer[1024];
+    sock =
+        tcp_server_accept(&server_address, &client_address, &client_addr_len);
+    tcp_recv(sock, &buffer, 1024);
   }
-
-  // Archivos van al cliente
-  FILE *fp;
-
-  // abres el archivo
-
-  // Se declara el tam total del archivo
-  size_t tam;
-  // Se utiliza fseek para encontrar el final
-  // del archivo.
-  fseek(fp, 0L, SEEK_END);
-  // Una vez el puntero esta en el final podemos
-  // decir la posicion y nos guardamos el tamanio del archivo
-  // Ya que la posicion nos indica el tamanio total del archivo
-  // porque estamos al final
-  tam = ftell(fp);
-  // Luego volvemos fp al inicio con rewind
-  rewind(fp);
-  // Dentro del while lo que recibe por el buffer
-  // lo escribo en un nuevo archivo.
 
   return 0;
 }
